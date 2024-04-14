@@ -1,7 +1,7 @@
 const model = require('../models/friend.model')
 
 function getFriends (req,res) {
-  res.send(friends)
+  res.send(model)
 }
 
 function getFriend (req,res) {

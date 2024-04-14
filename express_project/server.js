@@ -1,5 +1,7 @@
 const express = require('express');
-const friendController = require('./controllers/friends.controller')
+const path = require('path');
+
+const friendRouter = require('./routes/friend.router')
 
 const app = express();
 
@@ -13,16 +15,23 @@ app.use((req,res,next) => {
 })
 
 app.use(express.json());
+app.use('/site',express.static(path.join(__dirname, 'public')));
+
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+
+app.get('/', (req, res) => {
+  res.render('index', {
+    title: 'My Friends Are VERYY Clever',
+    caption: 'Let\'s go skiing!',
+  });
+});
 
 app.get('/', (req,res) => {
   res.send('Hello World')
 });
 
-app.get('/friends', friendController.getFriends);
-
-app.get('/friends/:id', friendController.getFriend);
-
-app.post('/friends', friendController.postFriend)
+app.use('/friends',friendRouter)
 
 app.listen(PORT , () => {
   console.log(`Server is listening on ${PORT}`)
