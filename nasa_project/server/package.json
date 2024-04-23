@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "watch": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "cluster": "pm2 start src/server.js -i max"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "csv-parse": "^5.5.5",
     "express": "^4.19.2",
     "morgan": "^1.10.0",
-    "nasa_project": "file:.."
+    "nasa_project": "file:..",
+    "pm2": "^5.3.1"
   }
 }
