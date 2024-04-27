@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "jest":{
-    "testEnviroment":"node"
+    "testEnvironment":"node"
   },
   "devDependencies": {
     "jest": "^29.7.0",
